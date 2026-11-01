@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/L Commerce Master Sri Lanka | අ.පො.ස (උ/පෙළ) වාණිජ පියස</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans Sinhala', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Sinhala:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+        }
+        .locked-overlay {
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(6px);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 9999px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- TOP HEADER / NAV -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-200 dark:border-slate-800 shadow-sm pointer-events-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3 cursor-pointer pointer-events-auto" onclick="switchMainTab('dashboard')">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30 text-xl font-black">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black tracking-tight bg-gradient-to-r from-emerald-600 via-teal-500 to-cyan-600 bg-clip-text text-transparent">A/L COMMERCE MASTER</h1>
+                    <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">අ.පො.ස (උ/පෙළ) වාණිජ අධ්‍යයන පියස</p>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden lg:flex items-center space-x-1 font-semibold text-xs pointer-events-auto">
+                <button type="button" onclick="switchMainTab('dashboard')" class="nav-btn px-4 py-2.5 rounded-xl transition text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/50 cursor-pointer" data-tab="dashboard">
+                    <i class="fa-solid fa-house mr-1.5"></i>මුල් පිටුව
+                </button>
+                <button type="button" onclick="switchMainTab('subjects')" class="nav-btn px-4 py-2.5 rounded-xl transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer" data-tab="subjects">
+                    <i class="fa-solid fa-book-open mr-1.5"></i>පාඩම් සහ MCQ
+                </button>
+                <button type="button" onclick="switchMainTab('flashcards')" class="nav-btn px-4 py-2.5 rounded-xl transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer" data-tab="flashcards">
+                    <i class="fa-solid fa-bolt mr-1.5"></i>ෆ්ලෑෂ් කාඩ් (Flashcards)
+                </button>
+                <button type="button" onclick="switchMainTab('planner')" class="nav-btn px-4 py-2.5 rounded-xl transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer" data-tab="planner">
+                    <i class="fa-solid fa-calendar-check mr-1.5"></i>දෛනික සැලසුම
+                </button>
+                <button type="button" onclick="switchMainTab('game')" class="nav-btn px-4 py-2.5 rounded-xl transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer" data-tab="game">
+                    <i class="fa-solid fa-gamepad mr-1.5"></i>මිතුරන්ගේ තරගය
+                </button>
+                <button type="button" onclick="switchMainTab('packages')" class="nav-btn px-4 py-2.5 rounded-xl transition text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50 font-bold cursor-pointer" data-tab="packages">
+                    <i class="fa-solid fa-gem mr-1.5"></i>පැකේජ මිලදී ගන්න
+                </button>
+                <button type="button" onclick="switchMainTab('admin')" class="nav-btn px-4 py-2.5 rounded-xl transition text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 font-bold cursor-pointer" data-tab="admin">
+                    <i class="fa-solid fa-user-shield mr-1.5"></i>Admin Panel
+                </button>
+            </nav>
+
+            <!-- Right Controls -->
+            <div class="flex items-center space-x-3 pointer-events-auto">
+                <button type="button" onclick="openStudentAuthModal()" class="hidden sm:flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-bold text-xs transition border border-emerald-500/20 cursor-pointer">
+                    <i class="fa-solid fa-user-circle"></i>
+                    <span id="nav-user-label">Sign Up / Login</span>
+                </button>
+
+                <button type="button" onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer">
+                    <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                </button>
+
+                <button type="button" onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-200 cursor-pointer">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-drawer" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 px-4 py-4 space-y-2 glass-panel">
+            <button onclick="switchMainTab('dashboard'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-xl font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800">මුල් පිටුව</button>
+            <button onclick="switchMainTab('subjects'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-xl font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800">පාඩම් සහ MCQ</button>
+            <button onclick="switchMainTab('flashcards'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-xl font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800">ෆ්ලෑෂ් කාඩ් (Flashcards)</button>
+            <button onclick="switchMainTab('planner'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-xl font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800">දෛනික සැලසුම</button>
+            <button onclick="switchMainTab('game'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-xl font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800">මිතුරන්ගේ තරගය</button>
+            <button onclick="switchMainTab('packages'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-bold text-sm text-amber-500 bg-amber-50 dark:bg-amber-950/40">පැකේජ මිලදී ගන්න</button>
+            <button onclick="switchMainTab('admin'); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-bold text-sm text-indigo-500 bg-indigo-50 dark:bg-indigo-950/40">Admin Panel</button>
+            <button onclick="openStudentAuthModal(); toggleMobileMenu();" class="w-full text-left py-2.5 px-4 rounded-bold text-sm text-emerald-500 bg-emerald-50 dark:bg-emerald-950/40">Sign Up / Login</button>
+        </div>
+    </header>
+
+    <!-- MAIN BODY -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= SECTION 1: DASHBOARD ================= -->
+        <section id="tab-dashboard" class="space-y-8">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 text-white p-8 sm:p-12 shadow-xl shadow-emerald-500/20">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="inline-block px-3.5 py-1.5 mb-4 text-xs font-extrabold uppercase tracking-wider bg-white/20 rounded-xl backdrop-blur-md">උසස් පෙළ වාණිජ විෂය ධාරාව 2027/2028</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-4 leading-tight">උසස් පෙළ වාණිජ විෂයන් විශිෂ්ට ලෙස ප්‍රගුණ කරන්න</h2>
+                    <p class="text-emerald-100 text-sm sm:text-base mb-8 leading-relaxed">12 සහ 13 ශ්‍රේණි සඳහා වූ කෙටි සටහන්, පසුගිය ප්‍රශ්න පත්‍ර, පාඩම් අනුව MCQ ප්‍රශ්න, මිතුරන්ගේ තරග සහ දෛනික අධ්‍යයන සැලසුම්කරණය එකම තැනකින් ලබාගන්න.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="switchMainTab('subjects')" class="px-6 py-3.5 rounded-2xl bg-white text-emerald-700 font-extrabold text-sm shadow-lg hover:bg-emerald-50 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-play mr-2"></i>නොමිලේ පාඩම් ආරම්භ කරන්න
+                        </button>
+                        <button onclick="switchMainTab('packages')" class="px-6 py-3.5 rounded-2xl bg-emerald-900/50 hover:bg-emerald-900/80 text-white font-extrabold text-sm backdrop-blur-md border border-white/20 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-tag mr-2"></i>පැකේජ විස්තර සහ ගාස්තු
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute -right-12 -bottom-16 opacity-15 pointer-events-none">
+                    <i class="fa-solid fa-book-bookmark text-[320px]"></i>
+                </div>
+            </div>
+
+            <!-- EXAM COUNTDOWN TIMER BANNER -->
+            <div class="glass-panel p-6 rounded-3xl shadow-lg border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl shadow-md">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold">2027 උසස් පෙළ විභාගයට ඉතිරි කාලය</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">විභාගය සාර්ථක කර ගැනීමට දැන්ම සිට සූදානම් වන්න!</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 text-center">
+                    <div class="px-4 py-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-500/20">
+                        <span id="countdown-days" class="text-xl font-black text-indigo-600 dark:text-indigo-400">240</span>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold">දින</p>
+                    </div>
+                    <div class="px-4 py-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-500/20">
+                        <span id="countdown-hours" class="text-xl font-black text-indigo-600 dark:text-indigo-400">14</span>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold">පැය</p>
+                    </div>
+                    <div class="px-4 py-2.5 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-500/20">
+                        <span id="countdown-mins" class="text-xl font-black text-indigo-600 dark:text-indigo-400">35</span>
+                        <p class="text-[10px] text-slate-400 uppercase font-bold">මිනි</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free Sample Banner -->
+            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold text-lg">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-amber-600 dark:text-amber-400">නොමිලේ අත්හදා බැලීම සක්‍රීයයි!</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">සියලුම විෂයන්හි 1 වන පාඩමේ කෙටි සටහන් සහ 1 වන පාඩමේ MCQ ප්‍රශ්න සම්පූර්ණයෙන්ම නොමිලේ ලබාගත හැක!</p>
+                    </div>
+                </div>
+                <button onclick="switchMainTab('subjects')" class="hidden sm:block px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow transition">දැන්ම ආරම්භ කරන්න</button>
+            </div>
+
+            <!-- Subject Grid Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">විෂයන් සහ පොදු පරීක්ෂණය</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- BS -->
+                    <div onclick="openSubjectView('bs')" class="glass-panel p-5 rounded-3xl shadow-sm hover:shadow-xl transition cursor-pointer border-l-4 border-emerald-500 group">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h4 class="font-extrabold text-base mb-1">ව්‍යාපාර අධ්‍යයනය</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">කළමනාකරණය, අලෙවිකරණය, මානව සම්පත්</p>
+                    </div>
+
+                    <!-- Accounting -->
+                    <div onclick="openSubjectView('acc')" class="glass-panel p-5 rounded-3xl shadow-sm hover:shadow-xl transition cursor-pointer border-l-4 border-teal-500 group">
+                        <div class="w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <h4 class="font-extrabold text-base mb-1">ගිණුම්කරණය</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">මූල්‍ය ප්‍රකාශන, සංගණන සහ අනුපාත</p>
+                    </div>
+
+                    <!-- Econ -->
+                    <div onclick="openSubjectView('econ')" class="glass-panel p-5 rounded-3xl shadow-sm hover:shadow-xl transition cursor-pointer border-l-4 border-cyan-500 group">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-100 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h4 class="font-extrabold text-base mb-1">ආර්ථික විද්‍යාව</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">ක්ෂුද්‍ර, මැක්‍රෝ සහ මුදල් ප්‍රතිපත්තිය</p>
+                    </div>
+
+                    <!-- ICT -->
+                    <div onclick="openSubjectView('ict')" class="glass-panel p-5 rounded-3xl shadow-sm hover:shadow-xl transition cursor-pointer border-l-4 border-indigo-500 group">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h4 class="font-extrabold text-base mb-1">තොරතුරු තාක්ෂණය</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">දත්ත සමුදාය, ජාලකරණය සහ පද්ධති</p>
+                    </div>
+
+                    <!-- General Test (FREE) -->
+                    <div onclick="openSubjectView('git')" class="glass-panel p-5 rounded-3xl shadow-sm hover:shadow-xl transition cursor-pointer border-l-4 border-amber-500 group relative overflow-hidden">
+                        <div class="absolute top-2 right-2 bg-amber-500 text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full">100% FREE</div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h4 class="font-extrabold text-base mb-1">පොදු පරීක්ෂණය</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Common General Test (සම්පූර්ණයෙන්ම නොමිලේ)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOP STUDENTS LEADERBOARD & AUDIO PODCAST SECTION -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
+                <!-- Leaderboard -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                        <h4 class="font-bold text-base flex items-center gap-2 text-amber-500">
+                            <i class="fa-solid fa-trophy"></i> සජීවී ප්‍රමුඛතා ලැයිස්තුව (Live Leaderboard)
+                        </h4>
+                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-500 flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Live Sync
+                        </span>
+                    </div>
+                    <div id="live-leaderboard-container" class="space-y-2.5">
+                        <div class="p-3 rounded-2xl bg-slate-900 text-white flex items-center justify-between text-xs transition-all">
+                            <div class="flex items-center space-x-3">
+                                <span class="w-6 h-6 rounded-full bg-amber-500 text-black font-black flex items-center justify-center text-xs">1</span>
+                                <div>
+                                    <strong class="text-white">විහාග සත්සර (Vihaga S.)</strong>
+                                    <p class="text-[10px] text-slate-400">ගිණුම්කරණය & BS</p>
+                                </div>
+                            </div>
+                            <span id="rank-score-1" class="text-amber-400 font-black">980 ලකුණු</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-slate-900 text-white flex items-center justify-between text-xs transition-all">
+                            <div class="flex items-center space-x-3">
+                                <span class="w-6 h-6 rounded-full bg-slate-400 text-black font-black flex items-center justify-center text-xs">2</span>
+                                <div>
+                                    <strong class="text-white">කාවින්දි පෙරේරා (Kavindi P.)</strong>
+                                    <p class="text-[10px] text-slate-400">ආර්ථික විද්‍යාව</p>
+                                </div>
+                            </div>
+                            <span id="rank-score-2" class="text-slate-300 font-black">940 ලකුණු</span>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-slate-900 text-white flex items-center justify-between text-xs transition-all">
+                            <div class="flex items-center space-x-3">
+                                <span class="w-6 h-6 rounded-full bg-amber-700 text-white font-black flex items-center justify-center text-xs">3</span>
+                                <div>
+                                    <strong class="text-white">සජිත් නිමේශ් (Sajith N.)</strong>
+                                    <p class="text-[10px] text-slate-400">ICT & BS</p>
+                                </div>
+                            </div>
+                            <span id="rank-score-3" class="text-amber-600 font-black">910 ලකුණු</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Short Notes Podcast -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                        <h4 class="font-bold text-base flex items-center gap-2 text-emerald-500">
+                            <i class="fa-solid fa-podcast"></i> ශ්‍රව්‍ය කෙටි සටහන් (Audio Podcasts)
+                        </h4>
+                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500">අලුත්ම</span>
+                    </div>
+                    <div id="dashboard-audio-podcasts-list" class="space-y-3">
+                        <!-- Dynamically populated from audioPodcastsData -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 2: SUBJECTS / NOTES / MCQS ================= -->
+        <section id="tab-subjects" class="hidden space-y-6">
+            <div class="glass-panel p-6 rounded-3xl shadow-sm space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-2xl font-bold">විෂය අධ්‍යයන පියස</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">ශ්‍රේණිය සහ විෂය තෝරා කෙටි සටහන්, Past Papers, MCQ ප්‍රශ්න සහ ෆ්ලෑෂ් කාඩ් වෙත පිවිසෙන්න.</p>
+                    </div>
+                    
+                    <!-- Grade Switcher -->
+                    <div class="flex bg-slate-200/70 dark:bg-slate-800 p-1.5 rounded-2xl self-start md:self-auto">
+                        <button id="btn-grade-12" onclick="setGradeFilter(12)" class="px-5 py-2 rounded-xl text-xs font-extrabold transition shadow-sm bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400">12 ශ්‍රේණිය</button>
+                        <button id="btn-grade-13" onclick="setGradeFilter(13)" class="px-5 py-2 rounded-xl text-xs font-extrabold transition text-slate-600 dark:text-slate-400 hover:text-slate-900">13 ශ්‍රේණිය</button>
+                    </div>
+                </div>
+
+                <!-- Subject Filter Pills -->
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                    <button onclick="setSubjectFilter('bs')" class="sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-emerald-600 text-white" data-sub="bs">ව්‍යාපාර අධ්‍යයනය</button>
+                    <button onclick="setSubjectFilter('acc')" class="sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" data-sub="acc">ගිණුම්කරණය</button>
+                    <button onclick="setSubjectFilter('econ')" class="sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" data-sub="econ">ආර්ථික විද්‍යාව</button>
+                    <button onclick="setSubjectFilter('ict')" class="sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" data-sub="ict">ICT</button>
+                    <button onclick="setSubjectFilter('git')" class="sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300" data-sub="git">පොදු පරීක්ෂණය (FREE)</button>
+                </div>
+            </div>
+
+            <!-- SUBJECT FLASHCARDS REVISION DECK -->
+            <div id="subject-flashcards-box" class="glass-panel p-6 rounded-3xl shadow-xl space-y-4 border border-amber-500/30">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <div class="flex items-center space-x-2 text-amber-500 font-bold text-sm">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>මෙම විෂයට අදාළ ෆ්ලෑෂ් කාඩ් (Quick Revision Flashcards)</span>
+                    </div>
+                    <span id="sub-flash-counter" class="text-xs font-bold text-slate-400">කාඩ්පත 1 / 1</span>
+                </div>
+
+                <div onclick="flipSubjectFlashcard()" class="min-h-[160px] p-6 rounded-2xl bg-gradient-to-tr from-slate-900 to-indigo-950 text-white cursor-pointer shadow-lg flex flex-col items-center justify-center relative overflow-hidden transition transform hover:scale-[1.01]">
+                    <span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-lg bg-white/10 text-amber-400" id="sub-flash-subject-name">ව්‍යාපාර අධ්‍යයනය</span>
+                    <span class="absolute top-3 right-3 text-[10px] text-slate-400"><i class="fa-solid fa-rotate mr-1"></i> හරවන්න</span>
+                    
+                    <div class="my-auto py-2 space-y-2 text-center">
+                        <p class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest" id="sub-flash-side-label">ප්‍රශ්නය / සංකල්පය (Front)</p>
+                        <h4 class="text-base sm:text-lg font-black leading-snug" id="sub-flash-text">ද්‍රවශීලතා අනුපාතය යනු කුමක්ද?</h4>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button onclick="prevSubjectFlashcard()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> පෙර කාඩ්පත
+                    </button>
+                    <button onclick="nextSubjectFlashcard()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow transition">
+                        ඊළඟ කාඩ්පත <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lessons Dynamic Container -->
+            <div id="lessons-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Lessons populated dynamically -->
+            </div>
+        </section>
+
+        <!-- ================= SECTION: FLASHCARDS (STANDALONE) ================= -->
+        <section id="tab-flashcards" class="hidden space-y-6 max-w-2xl mx-auto">
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 text-center">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <div class="flex items-center space-x-2 text-amber-500 font-bold text-sm">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>විෂය කරුණු පුනරීක්ෂණ ෆ්ලෑෂ් කාඩ් (Flashcards)</span>
+                    </div>
+                    <span id="flashcard-counter" class="text-xs font-bold text-slate-400">කාඩ්පත 1 / 5</span>
+                </div>
+
+                <div onclick="flipCurrentCard()" class="min-h-[220px] p-8 rounded-3xl bg-gradient-to-tr from-indigo-900 via-slate-900 to-slate-950 text-white cursor-pointer shadow-2xl flex flex-col items-center justify-center relative overflow-hidden transition transform hover:scale-[1.01]">
+                    <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/10 text-amber-400" id="flash-card-sub-badge">ව්‍යාපාර අධ්‍යයනය</span>
+                    <span class="absolute top-4 right-4 text-xs text-slate-400"><i class="fa-solid fa-rotate mr-1"></i> කාඩ්පත හරවන්න</span>
+                    
+                    <div class="my-auto py-4 space-y-3">
+                        <p class="text-xs font-bold text-indigo-300 uppercase tracking-widest" id="flash-card-side-label">ප්‍රශ්නය / සංකල්පය (Front)</p>
+                        <h3 class="text-lg sm:text-xl font-black leading-snug" id="flash-card-main-text">ද්‍රවශීලතා අනුපාතය යනු කුමක්ද?</h3>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                    <button onclick="prevFlashcard()" class="px-5 py-3 rounded-2xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> පෙර කාඩ්පත
+                    </button>
+                    <button onclick="flipCurrentCard()" class="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-lg transition">
+                        <i class="fa-solid fa-rotate mr-1.5"></i> හරවන්න (Flip)
+                    </button>
+                    <button onclick="nextFlashcard()" class="px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow-lg transition">
+                        ඊළඟ කාඩ්පත <i class="fa-solid fa-arrow-right ml-1.5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: DAY PLANNER ================= -->
+        <section id="tab-planner" class="hidden space-y-6 max-w-4xl mx-auto">
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                    <div>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">අධ්‍යයන කාර්යක්ෂමතාව</span>
+                        <h3 class="text-2xl font-bold mt-1">දෛනික අධ්‍යයන සැලසුම්කරණය (Day Planner)</h3>
+                    </div>
+                    <div class="text-right">
+                        <span id="planner-date" class="text-xs font-bold text-slate-400">අද දිනය</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="task-input" placeholder="උදා: ආර්ථික විද්‍යාව 2 වන පාඩමේ MCQ 20ක් විසඳීම..." class="flex-grow px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <select id="task-subject" class="px-3 py-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold">
+                        <option value="BS">BS</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Economics">Economics</option>
+                        <option value="ICT">ICT</option>
+                        <option value="General">General</option>
+                    </select>
+                    <button onclick="addPlannerTask()" class="px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition whitespace-nowrap">
+                        <i class="fa-solid fa-plus mr-1"></i> එකතු කරන්න
+                    </button>
+                </div>
+
+                <div id="planner-tasks-list" class="space-y-3">
+                    <!-- Dynamic tasks -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 4: FRIENDS GAME ================= -->
+        <section id="tab-game" class="hidden space-y-6 max-w-3xl mx-auto">
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl text-center space-y-6">
+                <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-indigo-500 to-purple-600 text-white flex items-center justify-center text-3xl mx-auto shadow-lg shadow-purple-500/30">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">මිතුරන්ගේ MCQ තරගය (Friends Battle)</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mt-1">ඔබගේ පන්තිකාමර මිතුරන් සමග සජීවීව MCQ තරග වට පවත්වන්න! Code එකක් සාදා හෝ යහළුවෙකුගේ Room Code එකක් ඇතුළත් කරන්න.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
+                    <div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3">
+                        <h4 class="font-bold text-sm">නව තරග කාමරයක් සාදන්න</h4>
+                        <button onclick="createGameRoom()" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow transition">Room Code ලබාගන්න</button>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3">
+                        <h4 class="font-bold text-sm">තරගයට එකතු වන්න</h4>
+                        <input type="text" id="game-room-input" placeholder="Room Code එක ගහන්න..." class="w-full px-3 py-2.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-xs text-center font-mono uppercase focus:outline-none">
+                        <button onclick="joinGameRoom()" class="w-full py-2.5 rounded-xl bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white font-bold text-xs shadow transition">සම්බන්ධ වන්න</button>
+                    </div>
+                </div>
+
+                <div id="game-arena" class="hidden p-6 rounded-2xl bg-indigo-950 text-white space-y-4 text-left">
+                    <div class="flex justify-between items-center text-xs font-mono border-b border-indigo-800 pb-2">
+                        <span>ROOM: <strong id="arena-room-code" class="text-amber-400">AL-COMMERCE-101</strong></span>
+                        <span>සම්බන්ධිත මිතුරන්: <strong class="text-emerald-400">2 දෙනෙකි</strong></span>
+                    </div>
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-300">ප්‍රශ්නය 1/5</span>
+                        <h4 class="font-bold text-base" id="game-q-text">ශ්‍රී ලංකාවේ මූල්‍ය ප්‍රතිපත්තිය ක්‍රියාත්මක කරනු ලබන ප්‍රධාන ආයතනය කුමක්ද?</h4>
+                        <div class="grid grid-cols-1 gap-2" id="game-options-container">
+                            <!-- Options -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 5: BUY PACKAGES & BANK DETAILS ================= -->
+        <section id="tab-packages" class="hidden space-y-8">
+            <!-- Packages Header Banner -->
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500/10 text-amber-500 border border-amber-500/30">
+                    VIP ගිණුම සක්‍රීය කරගන්න
+                </span>
+                <h3 class="text-3xl sm:text-4xl font-black tracking-tight">අධ්‍යයන පැකේජ සහ බැංකු ගිණුම් විස්තර</h3>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">ඔබට අවශ්‍ය පැකේජය තෝරා පහත සඳහන් බැංකු ගිණුමකට මුදල් තැන්පත් කර WhatsApp මගින් Slip එක යොමු කරන්න.</p>
+            </div>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Package 1 -->
+                <div class="glass-panel p-6 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4 relative overflow-hidden">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">තනි විෂයයක්</span>
+                        <h4 class="text-xl font-bold">12 හෝ 13 ශ්‍රේණිය</h4>
+                        <div class="text-3xl font-black text-emerald-600 dark:text-emerald-400" id="display-price-1">රු. 2,500</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">තෝරාගත් එක් විෂයයක එක ශ්‍රේණියක සියලුම කෙටි සටහන් සහ MCQs.</p>
+                        <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> කෙටි සටහන් සියල්ල Access</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> MCQ ප්‍රශ්න පත්‍ර Access</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> මාස 12ක වලංගු කාලය</li>
+                        </ul>
+                    </div>
+                    <button onclick="scrollToBankSection()" class="w-full py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-md transition">මිලදී ගන්න</button>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="glass-panel p-6 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4 relative overflow-hidden">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-400">තනි විෂයයක්</span>
+                        <h4 class="text-xl font-bold">12 සහ 13 ශ්‍රේණි 2ම</h4>
+                        <div class="text-3xl font-black text-teal-600 dark:text-teal-400" id="display-price-2">රු. 3,500</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">තෝරාගත් එක් විෂයයක 12 සහ 13 ශ්‍රේණි දෙකෙහිම සියලුම පාඩම්.</p>
+                        <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <li><i class="fa-solid fa-check text-teal-500 mr-1.5"></i> 12/13 ශ්‍රේණි 2කම සටහන්</li>
+                            <li><i class="fa-solid fa-check text-teal-500 mr-1.5"></i> Past Papers & Model Papers</li>
+                            <li><i class="fa-solid fa-check text-teal-500 mr-1.5"></i> මාස 24ක වලංගු කාලය</li>
+                        </ul>
+                    </div>
+                    <button onclick="scrollToBankSection()" class="w-full py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs shadow-md transition">මිලදී ගන්න</button>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="glass-panel p-6 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4 relative overflow-hidden">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-cyan-100 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-400">විෂයයන් 3ම</span>
+                        <h4 class="text-xl font-bold">තනි ශ්‍රේණියක්</h4>
+                        <div class="text-3xl font-black text-cyan-600 dark:text-cyan-400" id="display-price-3">රු. 6,000</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">ව්‍යාපාර අධ්‍යයනය, ගිණුම්කරණය සහ ආර්ථික විද්‍යාව විෂයයන් 3ම.</p>
+                        <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <li><i class="fa-solid fa-check text-cyan-500 mr-1.5"></i> විෂයයන් 3හිම සටහන්</li>
+                            <li><i class="fa-solid fa-check text-cyan-500 mr-1.5"></i> 100% Full Quiz Access</li>
+                            <li><i class="fa-solid fa-check text-cyan-500 mr-1.5"></i> මාස 12ක වලංගු කාලය</li>
+                        </ul>
+                    </div>
+                    <button onclick="scrollToBankSection()" class="w-full py-3 rounded-2xl bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold text-xs shadow-md transition">මිලදී ගන්න</button>
+                </div>
+
+                <!-- Package 4 (Mega Pass) -->
+                <div class="glass-panel p-6 rounded-3xl shadow-xl border-2 border-amber-500/60 flex flex-col justify-between space-y-4 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-24 h-24 bg-amber-500/20 rounded-full blur-xl pointer-events-none"></div>
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-amber-500 text-white">BEST VALUE MEGA PASS</span>
+                        <h4 class="text-xl font-extrabold text-amber-500">වාණිජ VIP Pass (සම්පූර්ණ)</h4>
+                        <div class="text-3xl font-black text-amber-500" id="display-price-4">රු. 10,000</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">12 සහ 13 ශ්‍රේණි 2හිම සියලුම විෂයයන් (BS, ACC, ECON, ICT) සඳහා Unlimited Access.</p>
+                        <ul class="text-xs space-y-2 text-slate-600 dark:text-slate-300 pt-2 border-t border-slate-200 dark:border-slate-800">
+                            <li><i class="fa-solid fa-star text-amber-500 mr-1.5"></i> සියලුම විෂයන් සහ ශ්‍රේණි</li>
+                            <li><i class="fa-solid fa-star text-amber-500 mr-1.5"></i> Past Papers + Model Papers PDF</li>
+                            <li><i class="fa-solid fa-star text-amber-500 mr-1.5"></i> විභාගය තෙක්ම VIP Access</li>
+                        </ul>
+                    </div>
+                    <button onclick="scrollToBankSection()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-black text-xs shadow-lg transition">VIP Pass එක ලබාගන්න</button>
+                </div>
+            </div>
+
+            <!-- Dynamic Bank Accounts Render Box -->
+            <div id="bank-deposit-details-box" class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 border border-emerald-500/30">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+                    <div>
+                        <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">ගෙවීම් තැන්පත් කිරීම</span>
+                        <h4 class="text-xl font-bold mt-1">බැංකු ගිණුම් විස්තර (Deposit Bank Accounts)</h4>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400">ඕනෑම බැංකුවකින් CDM / Online Transfer කළ හැක</span>
+                </div>
+
+                <!-- Dynamic Multi Bank Cards Container -->
+                <div id="student-bank-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Populated by renderStudentBankCards() -->
+                </div>
+
+                <!-- WhatsApp Deposit Confirmation CTA -->
+                <div class="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="space-y-1 text-center sm:text-left">
+                        <h5 class="text-sm font-bold text-emerald-600 dark:text-emerald-400">මුදල් තැන්පත් කළ පසු Slip එක එවන්න!</h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-300">ඔබේ නම, දුරකථන අංකය සහ තෝරාගත් පැකේජය සමග Slip එක පහත WhatsApp අංකයට යොමු කරන්න.</p>
+                    </div>
+                    <a id="whatsapp-direct-btn" href="https://wa.me/94764409296?text=Hello%20A/L%20Commerce%20Master,%20I%20have%20made%20the%20payment.%20Please%20activate%20my%20package." target="_blank" class="px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2 whitespace-nowrap">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp හරහා Slip එක එවන්න (076 440 9296)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 6: FULL-PAGE ADMIN MANAGEMENT PANEL ================= -->
+        <section id="tab-admin" class="hidden space-y-8">
+            <!-- Header Status Bar with COPY CODE Button -->
+            <div class="glass-panel p-6 rounded-3xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 border-l-4 border-indigo-500">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shadow-md">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black">Admin Management Portal</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">පාඩම් සටහන්, MCQs, බැංකු ගිණුම් සහ උප-ඇඩ්මින් බලතල පාලනය කරන්න.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3 w-full md:w-auto justify-end">
+                    <button onclick="copyEntireSourceCode()" class="px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow-lg transition flex items-center gap-2 whitespace-nowrap cursor-pointer">
+                        <i class="fa-solid fa-copy text-sm"></i> සම්පූර්ණ කේතය කොපි කරගන්න (Copy Code)
+                    </button>
+                    <div id="admin-user-status-bar">
+                        <!-- Dynamic Login Status or Login Trigger -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Prompt (If not authenticated) -->
+            <div id="admin-page-login-box" class="glass-panel p-8 rounded-3xl shadow-2xl max-w-md mx-auto space-y-5 border border-indigo-500/30">
+                <div class="text-center space-y-2">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mx-auto font-black">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <h4 class="text-xl font-extrabold">Admin ඇතුළු වීම</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Owner (`pubudu` / `12345`) හෝ Sub-Admin (`assistant` / `123`)</p>
+                </div>
+                <div class="space-y-3">
+                    <input type="text" id="admin-page-username" placeholder="Username (pubudu)" class="w-full px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <input type="password" id="admin-page-password" placeholder="Password (12345)" class="w-full px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button onclick="authenticatePageAdmin()" class="w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-lg transition">
+                        ඇතුළු වන්න (Sign In)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Full Page Admin Grid (Visible after Login) -->
+            <div id="admin-page-dashboard-grid" class="hidden space-y-8">
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                    <!-- CARD 1: Lesson Note Add Form -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-indigo-500/20">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                            <i class="fa-solid fa-file-pen"></i> අලුත් පාඩම් සටහනක් ඇතුළත් කිරීම
+                        </h4>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="space-y-1">
+                                <label class="block text-xs font-bold text-slate-400">විෂය තෝරන්න</label>
+                                <select id="form-note-subject" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                    <option value="bs">ව්‍යාපාර අධ්‍යයනය</option>
+                                    <option value="acc">ගිණුම්කරණය</option>
+                                    <option value="econ">ආර්ථික විද්‍යාව</option>
+                                    <option value="ict">තොරතුරු තාක්ෂණය</option>
+                                    <option value="git">පොදු පරීක්ෂණය</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="block text-xs font-bold text-slate-400">ශ්‍රේණිය (Grade)</label>
+                                <select id="form-note-grade" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                    <option value="12">12 ශ්‍රේණිය</option>
+                                    <option value="13">13 ශ්‍රේණිය</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">පාඩමේ මාතෘකාව</label>
+                            <input type="text" id="form-note-title" placeholder="උදා: මූල්‍ය ප්‍රකාශන විශ්ලේෂණය" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">කෙටි හැඳින්වීමක් (Short Desc)</label>
+                            <input type="text" id="form-note-shortdesc" placeholder="පාඩම පිළිබඳ කෙටි සටහනක්..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">PDF ගොනු ලින්ක් එක (Optional PDF Link/URL)</label>
+                            <input type="text" id="form-note-pdflink" placeholder="https://example.com/note.pdf" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-mono">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">සම්පූර්ණ කෙටි සටහන (Content)</label>
+                            <textarea id="form-note-content" placeholder="සවිස්තරාත්මක සටහන මෙහි ලියන්න..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs h-24"></textarea>
+                        </div>
+
+                        <button onclick="submitPageNoteForm()" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-lg transition">
+                            + සටහන ප්‍රකාශයට පත් කරන්න
+                        </button>
+                    </div>
+
+                    <!-- CARD 2: MCQ & Paper Add Form -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                            <i class="fa-solid fa-circle-question"></i> MCQ ප්‍රශ්නාවලියක් හෝ Paper එකක් එකතු කරන්න
+                        </h4>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">විෂය තෝරන්න</label>
+                            <select id="form-mcq-subject" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                <option value="bs">ව්‍යාපාර අධ්‍යයනය</option>
+                                <option value="acc">ගිණුම්කරණය</option>
+                                <option value="econ">ආර්ථික විද්‍යාව</option>
+                                <option value="ict">තොරතුරු තාක්ෂණය</option>
+                                <option value="git">පොදු පරීක්ෂණය</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">ප්‍රශ්නපත්‍ර වර්ගය (Category Type)</label>
+                            <select id="form-mcq-category" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                <option value="mcq">පාඩමෙන් පාඩමට MCQ පුහුණුව (Lesson MCQ Quiz)</option>
+                                <option value="paper">පසුගිය ප්‍රශ්න පත්‍ර / Model Paper (PDF Download)</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">ප්‍රශ්නාවලියේ මාතෘකාව (Title)</label>
+                            <input type="text" id="form-mcq-title" placeholder="උදා: 2024 G.C.E. A/L පසුගිය ප්‍රශ්න පත්‍රය" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">PDF Download Link (Optional Paper PDF)</label>
+                            <input type="text" id="form-mcq-pdflink" placeholder="https://example.com/paper.pdf" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-mono">
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-500 space-y-1">
+                            <p class="font-bold"><i class="fa-solid fa-lightbulb"></i> Past Papers සහ Model Papers සඳහා ප්‍රශ්න 50ක් සහ පැය 2ක (විනාඩි 120) කාල සීමාවක් ස්වයංක්‍රීයව හිමිවේ.</p>
+                        </div>
+
+                        <button onclick="submitPageMcqForm()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-lg transition">
+                            + ප්‍රශ්නපත්‍රය සුරකින්න
+                        </button>
+                    </div>
+
+                    <!-- CARD 3: Flashcard Add Form -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-amber-500/20">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-amber-500">
+                            <i class="fa-solid fa-bolt"></i> නව ෆ්ලෑෂ් කාඩ්පතක් (Flashcard) එකතු කරන්න
+                        </h4>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">විෂය තෝරන්න</label>
+                            <select id="form-flash-subject" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                <option value="ව්‍යාපාර අධ්‍යයනය">ව්‍යාපාර අධ්‍යයනය</option>
+                                <option value="ගිණුම්කරණය">ගිණුම්කරණය</option>
+                                <option value="ආර්ථික විද්‍යාව">ආර්ථික විද්‍යාව</option>
+                                <option value="තොරතුරු තාක්ෂණය">තොරතුරු තාක්ෂණය</option>
+                                <option value="පොදු පරීක්ෂණය">පොදු පරීක්ෂණය</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">ප්‍රශ්නය / සංකල්පය (Front)</label>
+                            <input type="text" id="form-flash-front" placeholder="උදා: ද්‍රවශීලතා අනුපාතය යනු කුමක්ද?" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">පිළිතුර / සූත්‍රය (Back)</label>
+                            <textarea id="form-flash-back" placeholder="ජංගම වත්කම් / ජංගම වගකීම්" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs h-20"></textarea>
+                        </div>
+
+                        <button onclick="submitPageFlashcardForm()" class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow-lg transition">
+                            + ෆ්ලෑෂ් කාඩ්පත එකතු කරන්න
+                        </button>
+                    </div>
+
+                    <!-- CARD 3.5: Audio Short Notes / Podcast Add Form -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-emerald-500/30">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-emerald-400">
+                            <i class="fa-solid fa-podcast"></i> නව ශ්‍රව්‍ය කෙටි සටහනක් (Audio Podcast) එකතු කරන්න
+                        </h4>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">ශ්‍රව්‍ය සටහනේ මාතෘකාව (Title)</label>
+                            <input type="text" id="form-audio-title" placeholder="උදා: මුල්‍ය අනුපාත සූත්‍ර මතක තබාගැනීම" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">කාලය (Duration)</label>
+                            <input type="text" id="form-audio-duration" placeholder="උදා: විනාඩි 8:30" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">ශ්‍රව්‍ය ගොනු ලින්ක් එක (Audio URL / MP3)</label>
+                            <input type="text" id="form-audio-url" placeholder="https://example.com/audio.mp3" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-mono">
+                        </div>
+
+                        <button onclick="submitPageAudioPodcastForm()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-lg transition">
+                            + ශ්‍රව්‍ය සටහන ප්‍රකාශයට පත් කරන්න
+                        </button>
+                    </div>
+
+                    <!-- CARD 4: Sub-Admin Permission Assignment -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-teal-500/20">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-teal-500">
+                            <i class="fa-solid fa-user-gear"></i> ඇඩ්මින් මුරපද සහ පරිශීලක නාම වෙනස් කිරීම
+                        </h4>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">වෙනස් කළ යුතු ඇඩ්මින් ගිණුම</label>
+                            <select id="form-edit-admin-target" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                <option value="owner">Owner Admin (pubudu)</option>
+                                <option value="sub">Sub-Admin (assistant)</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">අලුත් පරිශීලක නම (New Username)</label>
+                            <input type="text" id="form-new-admin-user" placeholder="අලුත් Username" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">අලුත් මුරපදය (New Password)</label>
+                            <input type="password" id="form-new-admin-pass" placeholder="අලුත් Password" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                        </div>
+
+                        <button onclick="updateAdminCredentials()" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs shadow-lg transition">
+                            ගිණුම් විස්තර යාවත්කාලීන කරන්න
+                        </button>
+                    </div>
+
+                    <!-- CARD 4.5: Exam Countdown Timer Management -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-indigo-500/30">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-indigo-400">
+                            <i class="fa-solid fa-clock-rotate-left"></i> විභාග කාල නියමක (Exam Countdown) වෙනස් කිරීම
+                        </h4>
+                        <p class="text-xs text-slate-400">මුල් පිටුවේ පෙන්වන 2027 A/L විභාග දිනය සහ වේලාව මෙයින් වෙනස් කළ හැක.</p>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-400">විභාග දිනය (Target Date & Time)</label>
+                            <input type="datetime-local" id="form-exam-datetime" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-mono">
+                        </div>
+
+                        <button onclick="updateExamCountdownTimer()" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-lg transition">
+                            විභාග කාල නියමකය යාවත්කාලීන කරන්න
+                        </button>
+                    </div>
+
+                    <!-- CARD 7: Student VIP Approvals & Package Unlock Manager -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-amber-500/30 lg:col-span-2">
+                        <h4 class="text-lg font-bold flex items-center gap-2 text-amber-500">
+                            <i class="fa-solid fa-user-check"></i> සිසුන්ගේ VIP පැකේජ අනුමත කිරීම සහ අගුළු හැරීම (Student Package Approvals)
+                        </h4>
+                        <p class="text-xs text-slate-400">සිසුවා මුදල් තැන්පත් කර WhatsApp මගින් එවන ලද අංකය හෝ නම ඇතුළත් කර අදාළ විෂය, ශ්‍රේණිය සහ පැකේජය තෝරා ක්ෂණිකව Unlock කර දෙන්න.</p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                            <input type="text" id="approval-student-identifier" placeholder="සිසුවාගේ දුරකථන අංකය හෝ නම..." class="px-4 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                            
+                            <!-- Subject Dropdown -->
+                            <select id="approval-subject-type" class="px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                <option value="ව්‍යාපාර අධ්‍යයනය">ව්‍යාපාර අධ්‍යයනය (Business Studies)</option>
+                                <option value="ගිණුම්කරණය">ගිණුම්කරණය (Accounting)</option>
+                                <option value="ආර්ථික විද්‍යාව">ආර්ථික විද්‍යාව (Economics)</option>
+                                <option value="තොරතුරු තාක්ෂණය">තොරතුරු තාක්ෂණය (ICT)</option>
+                                <option value="පොදු පරීක්ෂණය">පොදු පරීක්ෂණය (General Test)</option>
+                                <option value="සියලුම විෂයයන්">සියලුම විෂයයන් (VIP Mega Pass)</option>
+                            </select>
+
+                            <!-- Grade / Package Type Dropdown -->
+                            <select id="approval-package-type" class="px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                                <option value="12 ශ්‍රේණිය">12 ශ්‍රේණිය</option>
+                                <option value="13 ශ්‍රේණිය">13 ශ්‍රේණිය</option>
+                                <option value="12/13 ශ්‍රේණි 2ම">12/13 ශ්‍රේණි 2ම</option>
+                            </select>
+
+                            <button onclick="approveStudentVipPackage()" class="py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow-lg transition whitespace-nowrap">
+                                <i class="fa-solid fa-unlock-keyhole mr-1"></i> Unlock කරන්න
+                            </button>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-800">
+                            <h5 class="text-xs font-bold text-slate-400 mb-2">සක්‍රීය කරන ලද VIP සිසුන් ලැයිස්තුව:</h5>
+                            <div id="approved-students-list" class="space-y-2 max-h-40 overflow-y-auto">
+                                <div class="p-2.5 rounded-xl bg-slate-900 text-xs flex justify-between items-center text-slate-300">
+                                    <span>📞 076 440 9296 — <strong>සියලුම විෂයයන් (VIP Mega Pass)</strong> (Active)</span>
+                                    <span class="text-emerald-400 font-bold text-[11px]"><i class="fa-solid fa-circle-check"></i> Unlocked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 8: Registered & Logged-in Students Live Activity Viewer -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-cyan-500/30 lg:col-span-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-lg font-bold flex items-center gap-2 text-cyan-400">
+                                <i class="fa-solid fa-users-line"></i> වෙබ් අඩවියට පිවිසි සහ ලියාපදිංචි වූ සිසුන්ගේ ලැයිස්තුව (Live Student Activity)
+                            </h4>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Live Sync</span>
+                        </div>
+                        <p class="text-xs text-slate-400">වෙබ් අඩවියේ සිසුන් Sign up වන සහ Login වන විට ඔවුන්ගේ සැබෑ තොරතුරු මෙහි සජීවීව ලියැවේ.</p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+                            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400">මුළු ලියාපදිංචි සිසුන් (Total Signups)</p>
+                                    <h5 class="text-2xl font-black text-cyan-400 mt-1" id="stat-total-signups">12</h5>
+                                </div>
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400">අද දින Log වුණු සිසුන් (Active Today)</p>
+                                    <h5 class="text-2xl font-black text-emerald-400 mt-1" id="stat-active-today">5</h5>
+                                </div>
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-user-check"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 max-h-48 overflow-y-auto pr-1" id="admin-students-activity-list">
+                            <!-- Populated dynamically from localStorage -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CARD 5: Multi-Bank & Pricing Management (FULL WIDTH ROW - OWNER ONLY) -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-6 border-2 border-emerald-500/40 relative overflow-hidden">
+                    
+                    <!-- Sub-Admin Lock Overlay -->
+                    <div id="page-bank-lock-overlay" class="hidden absolute inset-0 z-20 locked-overlay flex flex-col items-center justify-center p-6 text-center text-white space-y-2">
+                        <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 border border-rose-400/40 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h4 class="text-lg font-extrabold text-rose-400">LOCKED 🔒 - Owner Access Only</h4>
+                        <p class="text-xs text-slate-300 max-w-md">බැංකු ගිණුම් විස්තර සහ පැකේජ ගාස්තු වෙනස් කිරීමේ බලය හිමිවන්නේ ප්‍රධාන ඇඩ්මින් (`pubudu`) ට පමණි.</p>
+                    </div>
+
+                    <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <div>
+                            <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">මුදල් පාලනය</span>
+                            <h4 class="text-xl font-bold mt-1">බැංකු ගිණුම් 2/3 සහ පැකේජ ගාස්තු කළමනාකරණය</h4>
+                        </div>
+                        <button onclick="addBankFormFields()" class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 transition">
+                            + අලුත් ගිණුමක් එකතු කරන්න
+                        </button>
+                    </div>
+
+                    <div id="bank-accounts-form-rows" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Rendered dynamically -->
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-4">
+                        <h5 class="text-xs font-bold uppercase text-slate-400">පැකේජ ගාස්තු (Package Pricing Rupees)</h5>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div>
+                                <label class="block text-[10px] text-slate-400 font-bold mb-1">තනි විෂය (12/13)</label>
+                                <input type="text" id="edit-price-1" value="රු. 2,500" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs font-bold text-emerald-400">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 font-bold mb-1">තනි විෂය (ශ්‍රේණි 2ම)</label>
+                                <input type="text" id="edit-price-2" value="රු. 3,500" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs font-bold text-teal-400">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 font-bold mb-1">විෂයයන් 3ම (තනි ශ්‍රේණිය)</label>
+                                <input type="text" id="edit-price-3" value="රු. 6,000" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs font-bold text-cyan-400">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] text-slate-400 font-bold mb-1">Mega Pass (විෂයයන් 3ම)</label>
+                                <input type="text" id="edit-price-4" value="රු. 10,000" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs font-bold text-amber-400">
+                            </div>
+                        </div>
+
+                        <button onclick="saveFinancialSettings()" class="w-full py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs shadow-lg transition">
+                            <i class="fa-solid fa-floppy-disk mr-1"></i> බැංකු ගිණුම් සහ පැකේජ මිල ගණන් සුරකින්න
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD 6: Published Content Manager (Edit & Delete Table) -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-xl space-y-4 border border-indigo-500/20">
+                    <h4 class="text-xl font-bold flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                        <i class="fa-solid fa-list-check"></i> පළ කළ පාඩම්, MCQ & Papers කළමනාකරණය (Edit / Delete)
+                    </h4>
+                    <div id="admin-content-list" class="space-y-2 max-h-80 overflow-y-auto pr-1">
+                        <!-- Dynamically populated via renderAdminContentList() -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 py-6 glass-panel">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+            <p>&copy; 2026 උසස් පෙළ වාණිජ විද්‍යා පියස - ශ්‍රී ලංකා. Business Studies, Accounting, Economics, ICT & පොදු පරීක්ෂණය.</p>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATIONS -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 glass-panel px-5 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 border border-slate-200 dark:border-slate-700">
+        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold">
+            <i class="fa-solid fa-circle-check text-sm"></i>
+        </div>
+        <div>
+            <h5 class="text-xs font-bold" id="toast-title">දැනුම්දීම</h5>
+            <p class="text-xs text-slate-500 dark:text-slate-400" id="toast-message">පණිවිඩය</p>
+        </div>
+    </div>
+
+    <!-- MCQ QUIZ MODAL -->
+    <div id="quiz-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-xl w-full p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+                <div>
+                    <span id="quiz-lesson-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400">1 වන පාඩම MCQ</span>
+                    <h3 id="quiz-title" class="text-lg font-bold">MCQ ප්‍රශ්න පත්‍රය</h3>
+                </div>
+                <button onclick="closeQuizModal()" class="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="space-y-4">
+                <div id="quiz-question-text" class="text-base font-bold">ප්‍රශ්නය පූරණය වෙමින් පවතී...</div>
+                <div id="quiz-options-wrapper" class="space-y-2.5">
+                    <!-- Options -->
+                </div>
+            </div>
+
+            <div id="quiz-explanation-box" class="hidden p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-900 dark:text-emerald-200">
+                <!-- Explanation -->
+            </div>
+
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-xs">
+                <span class="text-slate-400 font-bold">ලකුණු: <strong id="quiz-score-num" class="text-emerald-600">0</strong></span>
+                <button id="quiz-next-btn" onclick="nextLessonQuestion()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition disabled:opacity-40" disabled>ඊළඟ ප්‍රශ්නය</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- STUDENT SIGN UP / LOGIN MODAL -->
+    <div id="student-auth-modal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+                <div class="flex items-center space-x-2">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-user-graduate text-xs"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">සිසු ගිණුම් ප්‍රවේශය (Student Portal)</h3>
+                </div>
+                <button onclick="closeStudentAuthModal()" class="p-2 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Tabs for Sign Up vs Login -->
+            <div class="flex bg-slate-200 dark:bg-slate-900 p-1 rounded-2xl">
+                <button id="auth-tab-signup-btn" onclick="switchStudentAuthTab('signup')" class="flex-1 py-2 rounded-xl text-xs font-bold transition bg-white dark:bg-slate-800 text-emerald-600 shadow-sm">ලියාපදිංචි වීම (Sign Up)</button>
+                <button id="auth-tab-login-btn" onclick="switchStudentAuthTab('login')" class="flex-1 py-2 rounded-xl text-xs font-bold transition text-slate-500">ඇතුළු වීම (Login)</button>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="auth-signup-form" class="space-y-3.5">
+                <div class="space-1">
+                    <label class="block text-xs font-bold text-slate-400">සම්පූර්ණ නම (Full Name)</label>
+                    <input type="text" id="stu-signup-name" placeholder="උදා: කසුන් පෙරේරා" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs">
+                </div>
+                <div class="space-1">
+                    <label class="block text-xs font-bold text-slate-400">දුරකථන අංකය (WhatsApp No)</label>
+                    <input type="text" id="stu-signup-phone" placeholder="071 234 5678" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-mono">
+                </div>
+                <div class="space-1">
+                    <label class="block text-xs font-bold text-slate-400">ශ්‍රේණිය (Grade)</label>
+                    <select id="stu-signup-grade" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                        <option value="12 ශ්‍රේණිය">12 ශ්‍රේණිය</option>
+                        <option value="13 ශ්‍රේණිය">13 ශ්‍රේණිය</option>
+                        <option value="12/13 ශ්‍රේණි 2ම">12/13 ශ්‍රේණි 2ම</option>
+                    </select>
+                </div>
+                <div class="space-1">
+                    <label class="block text-xs font-bold text-slate-400">ප්‍රධාන විෂය (Main Subject)</label>
+                    <select id="stu-signup-subject" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-bold">
+                        <option value="ව්‍යාපාර අධ්‍යයනය">ව්‍යාපාර අධ්‍යයනය (Business Studies)</option>
+                        <option value="ගිණුම්කරණය">ගිණුම්කරණය (Accounting)</option>
+                        <option value="ආර්ථික විද්‍යාව">ආර්ථික විද්‍යාව (Economics)</option>
+                        <option value="තොරතුරු තාක්ෂණය">තොරතුරු තාක්ෂණය (ICT)</option>
+                        <option value="සියලුම විෂයයන්">සියලුම විෂයයන් (VIP Mega Pass)</option>
+                    </select>
+                </div>
+                <button onclick="submitStudentSignup()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-lg transition">
+                    ගිණුම සාදා Sign Up වන්න
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="auth-login-form" class="hidden space-y-3.5">
+                <div class="space-1">
+                    <label class="block text-xs font-bold text-slate-400">දුරකථන අංකය (Phone Number)</label>
+                    <input type="text" id="stu-login-phone" placeholder="071 234 5678" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 text-slate-100 border border-slate-700 text-xs font-mono">
+                </div>
+                <button onclick="submitStudentLogin()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-lg transition">
+                    ගිණුමට ඇතුළු වන්න (Login)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CORE -->
+    <script>
+        // State Management
+        let currentGrade = 12;
+        let currentSubject = 'bs';
+        let editingLessonId = null;
+
+        // Switch main tabs function
+        function switchMainTab(tabId) {
+            const tabs = ['dashboard', 'subjects', 'flashcards', 'planner', 'game', 'packages', 'admin'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tab-' + t);
+                if (el) {
+                    if (t === tabId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.add('font-bold', 'bg-emerald-50', 'dark:bg-emerald-950/50', 'text-emerald-600');
+                } else {
+                    btn.classList.remove('font-bold', 'bg-emerald-50', 'dark:bg-emerald-950/50', 'text-emerald-600');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Open specific subject view tab and set subject filter
+        function openSubjectView(subKey) {
+            currentSubject = subKey;
+            switchMainTab('subjects');
+            setSubjectFilter(subKey);
+        }
+
+        // Active Quiz State
+        let currentQuizLesson = null;
+        let currentQuizIndex = 0;
+        let currentQuizScore = 0;
+
+        // Flashcards Data Store
+        let flashcardsData = JSON.parse(localStorage.getItem('al_commerce_flashcards')) || [
+            {
+                subject: 'ව්‍යාපාර අධ්‍යයනය',
+                key: 'bs',
+                front: 'ද්‍රවශීලතා අනුපාතය (Liquidity Ratio) යනු කුමක්ද?',
+                back: 'ජංගම වත්කම් / ජංගම වගකීම් (Current Assets ÷ Current Liabilities)'
+            },
+            {
+                subject: 'ගිණුම්කරණය',
+                key: 'acc',
+                front: 'මූලික ගිණුම්කරණ සමීකරණය කුමක්ද?',
+                back: 'වත්කම් (Assets) = හිමිකම (Capital) + වගකීම් (Liabilities)'
+            },
+            {
+                subject: 'ආර්ථික විද්‍යාව',
+                key: 'econ',
+                front: 'ආර්ථික විද්‍යාවේ මූලික ගැටලුව කුමක්ද?',
+                back: 'සම්පත් සීමිත වීම සහ මිනිස් වුවමනා අසීමිත වීම නිසා ඇතිවන හිඟකමයි.'
+            },
+            {
+                subject: 'තොරතුරු තාක්ෂණය',
+                key: 'ict',
+                front: 'දත්ත සමුදාය (Database) යනු කුමක්ද?',
+                back: 'පිළිවෙලකට සකස් කරන ලද දත්ත එකතුවක් (Structured collection of data).'
+            },
+            {
+                subject: 'පොදු පරීක්ෂණය',
+                key: 'git',
+                front: 'ශ්‍රී ලංකාවේ ආණ්ඩුක්‍රම ව්‍යවස්ථාව සම්මත කළ වර්ෂය කුමක්ද?',
+                back: '1978 වර්ෂයයි.'
+            }
+        ];
+        let currentFlashIndex = 0;
+        let isFlashBackSide = false;
+
+        let currentSubFlashIndex = 0;
+        let isSubFlashBackSide = false;
+
+        // Audio Podcasts Data Store
+        let audioPodcastsData = JSON.parse(localStorage.getItem('al_commerce_audio_podcasts')) || [
+            { title: 'ව්‍යාපාර පරිසරය - කෙටි සටහන් (Ep 1)', duration: 'විනාඩි 6:40', url: '#' },
+            { title: 'මූල්‍ය අනුපාත සූත්‍ර මතක තබාගැනීම (Ep 2)', duration: 'විනාඩි 9:15', url: '#' }
+        ];
+
+        // Exam Target Date Store
+        let customExamDateStr = localStorage.getItem('al_commerce_exam_target') || '2027-12-15T09:00';
+
+        // Bank Accounts Store
+        let bankAccounts = JSON.parse(localStorage.getItem('al_commerce_banks')) || [
+            { bankName: 'Commercial Bank', accNo: '8012345678', accName: 'A/L Commerce Master (Pvt) Ltd', branch: 'Colombo 03' },
+            { bankName: 'BOC (බැංකුව)', accNo: '34567890', accName: 'P. S. Bandara', branch: 'Kandy' }
+        ];
+
+        // Mobile Menu & Theme Toggles
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            if (drawer) drawer.classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (icon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    icon.className = "fa-solid fa-sun text-sm text-amber-400";
+                } else {
+                    icon.className = "fa-solid fa-moon text-sm";
+                }
+            }
+        }
+
+        // Copy Entire Code Function
+        function copyEntireSourceCode() {
+            const htmlContent = document.documentElement.outerHTML;
+            // Using execCommand for maximum iframe compatibility
+            const textarea = document.createElement('textarea');
+            textarea.value = htmlContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('සම්පූර්ණ කේතය සාර්ථකව clipboard එකට කොපි කරගන්නා ලදී!', 'Copy Success');
+            } catch (err) {
+                showToast('ኮපි කරගැනීම අසාර්ථක විය.', 'Error');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Flashcards rendering functions
+        function renderFlashcard() {
+            const fc = flashcardsData[currentFlashIndex];
+            if (!fc) return;
+            const subBadge = document.getElementById('flash-card-sub-badge');
+            const sideLabel = document.getElementById('flash-card-side-label');
+            const mainText = document.getElementById('flash-card-main-text');
+            const counter = document.getElementById('flashcard-counter');
+
+            if (subBadge) subBadge.innerText = fc.subject;
+            if (counter) counter.innerText = `කාඩ්පත ${currentFlashIndex + 1} / ${flashcardsData.length}`;
+
+            if (isFlashBackSide) {
+                if (sideLabel) sideLabel.innerText = 'පිළිතුර / සූත්‍රය (Back)';
+                if (mainText) mainText.innerText = fc.back;
+            } else {
+                if (sideLabel) sideLabel.innerText = 'ප්‍රශ්නය / සංකල්පය (Front)';
+                if (mainText) mainText.innerText = fc.front;
+            }
+        }
+
+        function flipCurrentCard() {
+            isFlashBackSide = !isFlashBackSide;
+            renderFlashcard();
+        }
+
+        function nextFlashcard() {
+            isFlashBackSide = false;
+            currentFlashIndex = (currentFlashIndex + 1) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        function prevFlashcard() {
+            isFlashBackSide = false;
+            currentFlashIndex = (currentFlashIndex - 1 + flashcardsData.length) % flashcardsData.length;
+            renderFlashcard();
+        }
+
+        // Initialization & Live Ticks
+        window.onload = function() {
+            renderStudentBankCards();
+            renderLessons();
+            renderFlashcard();
+            renderSubjectFlashcard();
+            renderDashboardAudioPodcasts();
+            renderStudentActivityLogs();
+            updateStudentNavbarLabel();
+
+            const dtInput = document.getElementById('form-exam-datetime');
+            if (dtInput) dtInput.value = customExamDateStr;
+
+            // Real-time Exam Countdown Timer
+            function updateCountdown() {
+                const now = new Date();
+                const examDate = new Date(customExamDateStr);
+                const diff = examDate - now;
+                if (diff > 0) {
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                    const mins = Math.floor((diff / (1000 * 60)) % 60);
+                    
+                    const dEl = document.getElementById('countdown-days');
+                    const hEl = document.getElementById('countdown-hours');
+                    const mEl = document.getElementById('countdown-mins');
+                    if (dEl) dEl.innerText = days;
+                    if (hEl) hEl.innerText = hours;
+                    if (mEl) mEl.innerText = mins;
+                }
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        };
+
+        // Grade & Subject Filter functions
+        function setGradeFilter(grade) {
+            currentGrade = grade;
+            const b12 = document.getElementById('btn-grade-12');
+            const b13 = document.getElementById('btn-grade-13');
+            if (grade === 12) {
+                b12.className = "px-5 py-2 rounded-xl text-xs font-extrabold transition shadow-sm bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400";
+                b13.className = "px-5 py-2 rounded-xl text-xs font-extrabold transition text-slate-600 dark:text-slate-400 hover:text-slate-900";
+            } else {
+                b13.className = "px-5 py-2 rounded-xl text-xs font-extrabold transition shadow-sm bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400";
+                b12.className = "px-5 py-2 rounded-xl text-xs font-extrabold transition text-slate-600 dark:text-slate-400 hover:text-slate-900";
+            }
+            renderLessons();
+        }
+
+        function setSubjectFilter(sub) {
+            currentSubject = sub;
+            document.querySelectorAll('.sub-pill').forEach(btn => {
+                if (btn.getAttribute('data-sub') === sub) {
+                    btn.className = "sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-emerald-600 text-white";
+                } else {
+                    btn.className = "sub-pill px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300";
+                }
+            });
+            renderLessons();
+            renderSubjectFlashcard();
+        }
+
+        function renderLessons() {
+            const container = document.getElementById('lessons-container');
+            if (!container) return;
+
+            let lessons = JSON.parse(localStorage.getItem('al_commerce_lessons')) || [
+                {
+                    id: 1,
+                    subject: 'bs',
+                    grade: 12,
+                    title: '1 වන පාඩම: ව්‍යාපාර හැඳින්වීම සහ වර්ගීකරණය',
+                    shortDesc: 'ව්‍යාපාරයක මූලික සංකල්ප, අරමුණු සහ පාර්ශ්වකරුවන් පිළිබඳ හැඳින්වීම (100% Free Trial).',
+                    content: 'ව්‍යාපාරයක් යනු ලාභ ලැබීමේ අරමුණින් භාණ්ඩ හෝ සේවා නිෂ්පාදනය කර බෙදාහැරීමේ ක්‍රියාවලියකි.',
+                    pdfLink: '#',
+                    isFree: true
+                }
+            ];
+
+            const filtered = lessons.filter(l => l.subject === currentSubject && (l.grade == currentGrade || l.subject === 'git'));
+            
+            let html = '';
+            filtered.forEach(l => {
+                let isUnlocked = l.isFree || checkStudentVipAccess(l.subject);
+                html += `
+                    <div class="glass-panel p-6 rounded-3xl shadow-sm flex flex-col justify-between space-y-4 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                        ${!isUnlocked ? '<div class="absolute top-3 right-3 bg-amber-500 text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-lock mr-1"></i> VIP Locked</div>' : '<div class="absolute top-3 right-3 bg-emerald-500 text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-check mr-1"></i> Unlocked</div>'}
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">ශ්‍රේණිය ${l.grade}</span>
+                            <h4 class="font-extrabold text-base">${l.title}</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${l.shortDesc}</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <button onclick="showToast('සටහන විවෘත වේ...', 'සටහන')" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition">
+                                <i class="fa-solid fa-book-open mr-1"></i> සටහන කියවන්න
+                            </button>
+                            <button onclick="showToast('MCQ ප්‍රශ්නාවලිය ආරම්භ වේ...', 'Quiz')" class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition">
+                                <i class="fa-solid fa-circle-question mr-1"></i> MCQ Quiz
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function checkStudentVipAccess(subKey) {
+            let user = localStorage.getItem('al_commerce_current_user');
+            if (!user) return false;
+            let uData = JSON.parse(user);
+            if (uData.subject === 'සියලුම විෂයයන්') return true;
+            if (uData.subject && uData.subject.toLowerCase().includes(subKey.toLowerCase())) return true;
+            return false;
+        }
+
+        function renderSubjectFlashcard() {
+            const filtered = flashcardsData.filter(f => f.key === currentSubject || f.subject.toLowerCase().includes(currentSubject));
+            const activeList = filtered.length > 0 ? filtered : flashcardsData;
+            const fc = activeList[currentSubFlashIndex % activeList.length];
+            
+            const nameEl = document.getElementById('sub-flash-subject-name');
+            const labelEl = document.getElementById('sub-flash-side-label');
+            const textEl = document.getElementById('sub-flash-text');
+            const counterEl = document.getElementById('sub-flash-counter');
+
+            if (nameEl) nameEl.innerText = fc.subject;
+            if (counterEl) counterEl.innerText = `කාඩ්පත ${(currentSubFlashIndex % activeList.length) + 1} / ${activeList.length}`;
+            if (labelEl) labelEl.innerText = isSubFlashBackSide ? 'පිළිතුර / සූත්‍රය (Back)' : 'ප්‍රශ්නය / සංකල්පය (Front)';
+            if (textEl) textEl.innerText = isSubFlashBackSide ? fc.back : fc.front;
+        }
+
+        function flipSubjectFlashcard() {
+            isSubFlashBackSide = !isSubFlashBackSide;
+            renderSubjectFlashcard();
+        }
+
+        function nextSubjectFlashcard() {
+            isSubFlashBackSide = false;
+            currentSubFlashIndex++;
+            renderSubjectFlashcard();
+        }
+
+        function prevSubjectFlashcard() {
+            isSubFlashBackSide = false;
+            currentSubFlashIndex--;
+            renderSubjectFlashcard();
+        }
+
+        function renderDashboardAudioPodcasts() {
+            const list = document.getElementById('dashboard-audio-podcasts-list');
+            if (!list) return;
+            let html = '';
+            audioPodcastsData.forEach(p => {
+                html += `
+                    <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-headphones"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-800 dark:text-slate-200">${p.title}</strong>
+                                <span class="text-[10px] text-slate-400"><i class="fa-solid fa-clock mr-1"></i> ${p.duration}</span>
+                            </div>
+                        </div>
+                        <a href="${p.url}" target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition">
+                            <i class="fa-solid fa-play"></i> අසන්න
+                        </a>
+                    </div>
+                `;
+            });
+            list.innerHTML = html;
+        }
+
+        function renderStudentActivityLogs() {
+            const container = document.getElementById('admin-students-activity-list');
+            const totalSignupsEl = document.getElementById('stat-total-signups');
+            const activeTodayEl = document.getElementById('stat-active-today');
+            
+            let students = JSON.parse(localStorage.getItem('al_commerce_registered_students')) || [
+                { name: 'විහාග සත්සර', phone: '076 440 9296', grade: '13 ශ්‍රේණිය', subject: 'සියලුම විෂයයන්', date: 'අද' }
+            ];
+
+            if (totalSignupsEl) totalSignupsEl.innerText = students.length;
+            if (activeTodayEl) activeTodayEl.innerText = Math.min(students.length, 5);
+
+            if (!container) return;
+            let html = '';
+            students.forEach(s => {
+                html += `
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between text-xs">
+                        <div>
+                            <strong class="text-white">${s.name}</strong>
+                            <p class="text-[10px] text-slate-400">📞 ${s.phone} | ${s.grade} - ${s.subject}</p>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-[10px]"><i class="fa-solid fa-circle-check"></i> ${s.date}</span>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderStudentBankCards() {
+            const grid = document.getElementById('student-bank-cards-grid');
+            if (!grid) return;
+            let html = '';
+            bankAccounts.forEach(acc => {
+                html += `
+                    <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-2 border border-slate-800 shadow-md">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-emerald-400">${acc.bankName}</span>
+                            <span class="text-[10px] text-slate-400 uppercase">CDM / Online</span>
+                        </div>
+                        <div class="py-1">
+                            <h5 class="text-sm font-black font-mono tracking-wider text-amber-400">${acc.accNo}</h5>
+                            <p class="text-[11px] text-slate-300 font-bold">${acc.accName}</p>
+                            <p class="text-[10px] text-slate-400">ශාඛාව: ${acc.branch}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        function openStudentAuthModal() {
+            document.getElementById('student-auth-modal').classList.remove('hidden');
+        }
+
+        function closeStudentAuthModal() {
+            document.getElementById('student-auth-modal').classList.add('hidden');
+        }
+
+        function switchStudentAuthTab(tab) {
+            const sForm = document.getElementById('auth-signup-form');
+            const lForm = document.getElementById('auth-login-form');
+            const sBtn = document.getElementById('auth-tab-signup-btn');
+            const lBtn = document.getElementById('auth-tab-login-btn');
+
+            if (tab === 'signup') {
+                sForm.classList.remove('hidden');
+                lForm.classList.add('hidden');
+                sBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition bg-white dark:bg-slate-800 text-emerald-600 shadow-sm";
+                lBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition text-slate-500";
+            } else {
+                sForm.classList.add('hidden');
+                lForm.classList.remove('hidden');
+                lBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition bg-white dark:bg-slate-800 text-emerald-600 shadow-sm";
+                sBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition text-slate-500";
+            }
+        }
+
+        function submitStudentSignup() {
+            const name = document.getElementById('stu-signup-name').value.trim();
+            const phone = document.getElementById('stu-signup-phone').value.trim();
+            const grade = document.getElementById('stu-signup-grade').value;
+            const subject = document.getElementById('stu-signup-subject').value;
+
+            if (!name || !phone) {
+                showToast('කරුණාකර නම සහ දුරකථන අංකය ඇතුළත් කරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            let students = JSON.parse(localStorage.getItem('al_commerce_registered_students')) || [];
+            const newStu = { name, phone, grade, subject, date: 'අද' };
+            students.unshift(newStu);
+            localStorage.setItem('al_commerce_registered_students', JSON.stringify(students));
+            localStorage.setItem('al_commerce_current_user', JSON.stringify(newStu));
+
+            closeStudentAuthModal();
+            updateStudentNavbarLabel();
+            showToast(`සාර්ථකයි! සාදරයෙන් පිළිගනිමු, ${name}`, 'ගිණුම සක්‍රීය විය');
+            renderStudentActivityLogs();
+        }
+
+        function submitStudentLogin() {
+            const phone = document.getElementById('stu-login-phone').value.trim();
+            if (!phone) {
+                showToast('කරුණාකර දුරකථන අංකය ඇතුළත් කරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            let students = JSON.parse(localStorage.getItem('al_commerce_registered_students')) || [];
+            let found = students.find(s => s.phone === phone);
+
+            if (found) {
+                localStorage.setItem('al_commerce_current_user', JSON.stringify(found));
+                closeStudentAuthModal();
+                updateStudentNavbarLabel();
+                showToast(`සාර්ථකයි! නැවත පිළිගනිමු, ${found.name}`, 'Login සාර්ථකයි');
+            } else {
+                showToast('මෙම දුරකථන අංකය සහිත ගිණුමක් හමු නොවීය.', 'දෝෂයකි');
+            }
+        }
+
+        function updateStudentNavbarLabel() {
+            let user = localStorage.getItem('al_commerce_current_user');
+            const label = document.getElementById('nav-user-label');
+            if (user && label) {
+                let uData = JSON.parse(user);
+                label.innerText = uData.name;
+            }
+        }
+
+        function scrollToBankSection() {
+            switchMainTab('packages');
+        }
+
+        function showToast(msg, title = 'දැනුම්දීම') {
+            const toast = document.getElementById('toast');
+            const tTitle = document.getElementById('toast-title');
+            const tMsg = document.getElementById('toast-message');
+            if (toast && tTitle && tMsg) {
+                tTitle.innerText = title;
+                tMsg.innerText = msg;
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 3500);
+            }
+        }
+
+        // Admin Auth & Functions
+        function authenticatePageAdmin() {
+            const u = document.getElementById('admin-page-username').value.trim();
+            const p = document.getElementById('admin-page-password').value.trim();
+
+            if ((u === 'pubudu' && p === '12345') || (u === 'assistant' && p === '123')) {
+                localStorage.setItem('al_commerce_admin_logged', u);
+                renderPageAdminState();
+                showToast('සාර්ථකව Admin ලෙස ඇතුළු විය!', 'සාර්ථකයි');
+            } else {
+                showToast('වැරදි Username හෝ Password එකක්!', 'දෝෂයකි');
+            }
+        }
+
+        function renderPageAdminState() {
+            const role = localStorage.getItem('al_commerce_admin_logged');
+            const loginBox = document.getElementById('admin-page-login-box');
+            const gridBox = document.getElementById('admin-page-dashboard-grid');
+            const lockOverlay = document.getElementById('page-bank-lock-overlay');
+            const statusBar = document.getElementById('admin-user-status-bar');
+
+            if (role) {
+                if (loginBox) loginBox.classList.add('hidden');
+                if (gridBox) gridBox.classList.remove('hidden');
+                if (statusBar) {
+                    statusBar.innerHTML = `
+                        <div class="px-4 py-2.5 rounded-2xl bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-xs font-bold flex justify-between items-center border border-indigo-500/30">
+                            <span>${role === 'pubudu' ? 'Owner Admin' : 'Sub-Admin'}</span>
+                            <button onclick="logoutPageAdmin()" class="text-rose-500 hover:underline text-[11px] font-bold ml-3">ඉවත් වන්න</button>
+                        </div>
+                    `;
+                }
+                if (role === 'assistant' && lockOverlay) {
+                    lockOverlay.classList.remove('hidden');
+                } else if (lockOverlay) {
+                    lockOverlay.classList.add('hidden');
+                }
+            } else {
+                if (loginBox) loginBox.classList.remove('hidden');
+                if (gridBox) gridBox.classList.add('hidden');
+                if (statusBar) statusBar.innerHTML = '';
+            }
+        }
+
+        function logoutPageAdmin() {
+            localStorage.removeItem('al_commerce_admin_logged');
+            renderPageAdminState();
+            showToast('Admin ගිණුමෙන් ඉවත් විය.', 'දැනුම්දීම');
+        }
+
+        function submitPageNoteForm() {
+            const sub = document.getElementById('form-note-subject').value;
+            const grade = document.getElementById('form-note-grade').value;
+            const title = document.getElementById('form-note-title').value.trim();
+            const shortDesc = document.getElementById('form-note-shortdesc').value.trim();
+            const pdfLink = document.getElementById('form-note-pdflink').value.trim();
+            const content = document.getElementById('form-note-content').value.trim();
+
+            if (!title) {
+                showToast('කරුණාකර පාඩමේ මාතෘකාව ඇතුළත් කරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            let lessons = JSON.parse(localStorage.getItem('al_commerce_lessons')) || [];
+            lessons.unshift({
+                id: Date.now(),
+                subject: sub,
+                grade: parseInt(grade),
+                title,
+                shortDesc: shortDesc || title,
+                content: content || 'පාඩම් සටහන අඩංගු වේ.',
+                pdfLink: pdfLink || '#',
+                isFree: false
+            });
+            localStorage.setItem('al_commerce_lessons', JSON.stringify(lessons));
+
+            document.getElementById('form-note-title').value = '';
+            document.getElementById('form-note-shortdesc').value = '';
+            document.getElementById('form-note-pdflink').value = '';
+            document.getElementById('form-note-content').value = '';
+
+            renderLessons();
+            showToast('පාඩම් සටහන සාර්ථකව ප්‍රකාශයට පත් කරන ලදී!', 'සාර්ථකයි');
+        }
+
+        function submitPageFlashcardForm() {
+            const subject = document.getElementById('form-flash-subject').value;
+            const front = document.getElementById('form-flash-front').value.trim();
+            const back = document.getElementById('form-flash-back').value.trim();
+
+            if (!front || !back) {
+                showToast('කරුණාකර ප්‍රශ්නය සහ පිළිතුර දෙකම ඇතුළත් කරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            let subKey = 'bs';
+            if (subject.includes('ගිණුම්කරණය')) subKey = 'acc';
+            else if (subject.includes('ආර්ථික')) subKey = 'econ';
+            else if (subject.includes('තොරතුරු')) subKey = 'ict';
+            else if (subject.includes('පොදු')) subKey = 'git';
+
+            flashcardsData.unshift({ subject, key: subKey, front, back });
+            localStorage.setItem('al_commerce_flashcards', JSON.stringify(flashcardsData));
+
+            document.getElementById('form-flash-front').value = '';
+            document.getElementById('form-flash-back').value = '';
+
+            renderFlashcard();
+            renderSubjectFlashcard();
+            showToast('නව ෆ්ලෑෂ් කාඩ්පත සාර්ථකව එකතු කරන ලදී!', 'සාර්ථකයි');
+        }
+
+        function submitPageAudioPodcastForm() {
+            const title = document.getElementById('form-audio-title').value.trim();
+            const duration = document.getElementById('form-audio-duration').value.trim();
+            const url = document.getElementById('form-audio-url').value.trim();
+
+            if (!title) {
+                showToast('කරුණාකර ශ්‍රව්‍ය සටහනේ මාතෘකාව ඇතුළත් කරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            audioPodcastsData.unshift({ title, duration: duration || 'විනාඩි 5:00', url: url || '#' });
+            localStorage.setItem('al_commerce_audio_podcasts', JSON.stringify(audioPodcastsData));
+
+            document.getElementById('form-audio-title').value = '';
+            document.getElementById('form-audio-duration').value = '';
+            document.getElementById('form-audio-url').value = '';
+
+            renderDashboardAudioPodcasts();
+            showToast('ශ්‍රව්‍ය කෙටි සටහන සාර්ථකව පල කරන ලදී!', 'සාර්ථකයි');
+        }
+
+        function updateExamCountdownTimer() {
+            const dtInput = document.getElementById('form-exam-datetime');
+            if (!dtInput || !dtInput.value) {
+                showToast('කරුණාකර නිවැරදි දිනයක් සහ වේලාවක් තෝරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            customExamDateStr = dtInput.value;
+            localStorage.setItem('al_commerce_exam_target', customExamDateStr);
+            showToast('විභාග කාල නියමකය සාර්ථකව වෙනස් කරන ලදී!', 'යාවත්කාලීන විය');
+        }
+
+        function approveStudentVipPackage() {
+            const ident = document.getElementById('approval-student-identifier').value.trim();
+            const sub = document.getElementById('approval-subject-type').value;
+            const pkg = document.getElementById('approval-package-type').value;
+
+            if (!ident) {
+                showToast('කරුණාකර සිසුවාගේ දුරකථන අංකය හෝ නම ඇතුළත් කරන්න.', 'අවවාදයයි');
+                return;
+            }
+
+            showToast(`සිසුවාට (${ident}) ${sub} (${pkg}) VIP පැකේජය සාර්ථකව අගුළු හරින ලදී!`, 'VIP Unlocked');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPageAdminState();
+        });
+    </script>
+</body>
+</html>
